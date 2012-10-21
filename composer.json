@@ -1,0 +1,24 @@
+{
+    "name": "sfk/email-template-bundle",
+    "type": "symfony-bundle",
+    "description": "This bundle provides an easy way to store and send diffrent kind of emails from your app",
+    "keywords": ["email integration","twig email", "doctrine email"],
+    "homepage": "http://github.com/getme/EmailTemplateBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Oleg Khussainov",
+            "email": "oleg@hireoleg.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "symfony/framework-bundle": ">=2.1,<2.3-dev"
+    },
+    "autoload": {
+        "psr-0": {
+            "Sfk\\EmailTemplateBundle": ""
+        }
+    },
+    "target-dir": "Sfk/EmailTemplateBundle"
+}
