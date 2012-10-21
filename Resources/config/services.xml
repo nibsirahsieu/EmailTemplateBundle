@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="sfk_email_template.loader.twig_class">Sfk\EmailTemplateBundle\Loader\TwigLoader</parameter>
+    </parameters>
+
+    <services>
+        <service id="sfk_email_template.loader.twig" class="%sfk_email_template.loader.twig_class%">
+            <argument type="service" id="twig" />
+        </service>
+
+        <service id="sfk_email_template.loader" alias="sfk_email_template.loader.twig"></service>
+    </services>    
+</container>
