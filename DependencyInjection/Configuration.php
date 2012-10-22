@@ -19,6 +19,12 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('sfk_email_template');
+
+        $rootNode
+            ->children()
+                ->scalarNode('default_loader')->defaultValue('sfk_email_template.loader.twig')
+            ->end()
+        ;
         
         return $treeBuilder;
     }

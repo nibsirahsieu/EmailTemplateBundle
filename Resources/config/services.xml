@@ -5,6 +5,8 @@
 
     <parameters>
         <parameter key="sfk_email_template.loader.twig_class">Sfk\EmailTemplateBundle\Loader\TwigLoader</parameter>
+        <parameter key="sfk_email_template.loader.doctrine_class">Sfk\EmailTemplateBundle\Loader\DoctrineLoader</parameter>
+        <parameter key="sfk_email_template.loader.chain_class">Sfk\EmailTemplateBundle\Loader\ChainLoader</parameter>
     </parameters>
 
     <services>
@@ -12,6 +14,9 @@
             <argument type="service" id="twig" />
         </service>
 
-        <service id="sfk_email_template.loader" alias="sfk_email_template.loader.twig"></service>
-    </services>    
+        <service id="sfk_email_template.loader.doctrine" class="%sfk_email_template.loader.doctrine_class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
+
+    </services>
 </container>
