@@ -5,6 +5,7 @@
 
     <parameters>
         <parameter key="sfk_email_template.loader.twig_class">Sfk\EmailTemplateBundle\Loader\TwigLoader</parameter>
+        <parameter key="sfk_email_template.loader.chain_class">Sfk\EmailTemplateBundle\Loader\ChainLoader</parameter>
     </parameters>
 
     <services>
