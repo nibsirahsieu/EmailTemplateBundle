@@ -11,7 +11,5 @@
         <service id="sfk_email_template.loader.twig" class="%sfk_email_template.loader.twig_class%">
             <argument type="service" id="twig" />
         </service>
-
-        <service id="sfk_email_template.loader" alias="sfk_email_template.loader.twig"></service>
-    </services>    
+    </services>
 </container>
