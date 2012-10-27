@@ -105,7 +105,7 @@ Thanks
 
 ## Advanced Usage
 
-* [How to use templates with database (Doctrine)](https://github.com/getme/EmailTemplateBundle/Resources/doc/doctrine.md).
+* [How to use templates with database (Doctrine)](https://github.com/getme/EmailTemplateBundle/blob/master/Resources/doc/doctrine.md).
 
 ## Credits
 
