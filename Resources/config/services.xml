@@ -5,11 +5,16 @@
 
     <parameters>
         <parameter key="sfk_email_template.loader.twig_class">Sfk\EmailTemplateBundle\Loader\TwigLoader</parameter>
+        <parameter key="sfk_email_template.loader.object_class">Sfk\EmailTemplateBundle\Loader\ObjectLoader</parameter>
         <parameter key="sfk_email_template.loader.chain_class">Sfk\EmailTemplateBundle\Loader\ChainLoader</parameter>
     </parameters>
 
     <services>
         <service id="sfk_email_template.loader.twig" class="%sfk_email_template.loader.twig_class%">
+            <argument type="service" id="twig" />
+        </service>
+
+        <service id="sfk_email_template.loader.object" class="%sfk_email_template.loader.object_class%">
             <argument type="service" id="twig" />
         </service>
     </services>

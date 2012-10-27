@@ -39,6 +39,8 @@ class ChainLoader implements LoaderInterface
      */
     public function load($templateName, array $parameters = array())
     {
+        $templateName = (string) $templateName;
+        
         $template = null;
         foreach ($this->loaders as $loader) {
             try {

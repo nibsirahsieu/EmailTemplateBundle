@@ -32,10 +32,12 @@ class TwigLoader implements LoaderInterface
      */
     public function load($templateName, array $parameters = array())
     {
+        $templateName = (string) $templateName;
+        
         try {
             $template = $this->twig->loadTemplate($templateName);
                 
-            $from = $template->renderBlock('from', array());
+            $from = $template->renderBlock('from', $parameters);
             $subject = $template->renderBlock('subject', $parameters);
             $body = $template->renderBlock('body', $parameters);
         } catch (\Twig_Error_Loader $e) {

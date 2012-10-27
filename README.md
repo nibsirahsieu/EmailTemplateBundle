@@ -105,7 +105,7 @@ Thanks
 
 ## Advanced Usage
 
-* How to store email templates in a database (Doctrine).
+* [How to use templates with database (Doctrine)](https://github.com/getme/EmailTemplateBundle/Resources/doc/doctrine.md).
 
 ## Credits
 
