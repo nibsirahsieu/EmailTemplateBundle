@@ -25,12 +25,23 @@ class ChainLoader implements LoaderInterface
     }
 
     /**
-     * @param LoaderInterface $loader
+     * Add loader
      * 
+     * @param LoaderInterface $loader
      */
     public function addLoader(LoaderInterface $loader)
     {
         $this->loaders[] = $loader;
+    }
+
+    /**
+     * Return loaders
+     * 
+     * @return array
+     */
+    public function getLoaders()
+    {
+        return $this->loaders;
     }
 
     /**
