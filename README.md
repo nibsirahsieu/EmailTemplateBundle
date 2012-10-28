@@ -107,6 +107,7 @@ Thanks
 
 ## Advanced Usage
 
+* [Configuration](https://github.com/getme/EmailTemplateBundle/blob/master/Resources/doc/config.md).
 * [How to use templates with database (Doctrine)](https://github.com/getme/EmailTemplateBundle/blob/master/Resources/doc/doctrine.md).
 
 ## Credits
