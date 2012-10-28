@@ -9,7 +9,7 @@ $this->get('sfk_email_template.loader')
     ->load('AcmeDemoBundle::my_template.html.twig')
 ;
 ```
->'**sfk_email_template.loader**' is just an alias to the twig, object or any other loader 
+>**'sfk_email_template.loader'** is just an alias to the twig, object or any other loader 
 >depending on the settings in app/config/config.yml (See below)
 
 You can change default loader in  ```app/config/config.yml``` file
