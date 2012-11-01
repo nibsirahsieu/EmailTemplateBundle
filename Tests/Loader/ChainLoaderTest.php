@@ -2,8 +2,8 @@
 
 namespace Sfk\EmailTemplateBundle\Tests\Loader;
 
-use Sfk\EmailTemplateBundle\Loader\ChainLoader;
 use Sfk\EmailTemplateBundle\Loader\LoaderInterface;
+use Sfk\EmailTemplateBundle\Template\EmailTemplate;
 
 /**
  * ChainLoaderTest
@@ -11,46 +11,73 @@ use Sfk\EmailTemplateBundle\Loader\LoaderInterface;
  */
 class ChainLoaderTest extends \PHPUnit_Framework_TestCase
 {
-    protected $loader;
-
-    public function setUp()
+    public function testAddLoader()
     {
-        $this->loader = new ChainLoader();
-    }
+        $loader = $this->getMockBuilder('Sfk\EmailTemplateBundle\Loader\ChainLoader')
+            ->setMethods(array('addLoader'))
+            ->getMock()
+        ;
 
-    public function testDefault()
-    {
-        $this->assertTrue(is_array($this->loader->getLoaders()));
-        $this->assertEquals(0, count($this->loader->getLoaders()));
-    }
+        $this->assertTrue(is_array($loader->getLoaders()));
+        $this->assertEquals(0, count($loader->getLoaders()));
 
-    public function testAddInvalidLoaderException()
-    {
+        $loader->expects($this->once())
+            ->method('addLoader')
+        ;
+
+        $loader->addLoader(new TestLoader());
+
         try {
-            $this->loader->addLoader(new InvalidLoaderClass());
-        } catch (\Exception $expected) {
+            $loader->addLoader(new \stdClass());
+        } catch(\Exception $e) {
+            // pass
             return;
         }
 
-        $this->fail('An expected exception has not been raised.');
+        $this->fail('An expected exception has not been raised, addLoader must accept LoaderInterface.');
     }
 
-    public function testAddValidLoaderException()
+    public function testNoLoaders()
     {
-        $this->loader->addLoader(new ValidLoaderClass());
+        $loader = $this->getMockBuilder('Sfk\EmailTemplateBundle\Loader\ChainLoader')
+            ->setMethods(null)
+            ->getMock()
+        ;
 
-        $this->assertEquals(1, count($this->loader->getLoaders()));
+        $this->setExpectedException('LogicException');
+
+        // should throw exception because no loaders added before ->load()
+        $loader->load('email.html.twig');
+    }
+
+    public function testOneLoader()
+    {
+        $loader = $this->getMockBuilder('Sfk\EmailTemplateBundle\Loader\ChainLoader')
+            ->setMethods(null)
+            ->getMock()
+        ;
+
+        $loader->addLoader(new TestLoader());
+
+        $template = $loader->load('email.html.twig');
+
+        $this->assertInstanceOf('Sfk\EmailTemplateBundle\Template\EmailTemplateInterface', $template);
+        $this->assertEquals('example@example.com', $template->getFrom());
+        $this->assertEquals('Test subject', $template->getSubject());
+        $this->assertEquals('Test body', $template->getBody());
+
     }
 }
 
-class InvalidLoaderClass
+class TestLoader implements LoaderInterface 
 {
 
-}
-
-class ValidLoaderClass implements LoaderInterface {
-    public function load($name, array $parameters = array())        
+    public function load($templateName, array $parameters = array())
     {
-
+        return new EmailTemplate(
+            'example@example.com', 
+            'Test subject', 
+            'Test body'
+        );
     }
 }

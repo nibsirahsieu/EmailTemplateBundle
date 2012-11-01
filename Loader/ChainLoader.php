@@ -50,6 +50,10 @@ class ChainLoader implements LoaderInterface
      */
     public function load($templateName, array $parameters = array())
     {
+        if (0 == count($this->loaders)) {
+            throw new \LogicException('You must add at least one loader.');
+        }
+
         $templateName = (string) $templateName;
         
         $template = null;
