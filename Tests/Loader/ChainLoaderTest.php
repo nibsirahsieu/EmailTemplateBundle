@@ -63,6 +63,8 @@ class ChainLoaderTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('Sfk\EmailTemplateBundle\Template\EmailTemplateInterface', $template);
         $this->assertEquals('example@example.com', $template->getFrom());
+        $this->assertEquals('ccexample@example.com', $template->getCc());
+        $this->assertEquals('bccexample@example.com', $template->getBcc());
         $this->assertEquals('Test subject', $template->getSubject());
         $this->assertEquals('Test body', $template->getBody());
 
@@ -75,9 +77,11 @@ class TestLoader implements LoaderInterface
     public function load($templateName, array $parameters = array())
     {
         return new EmailTemplate(
-            'example@example.com', 
+            'example@example.com',
             'Test subject', 
-            'Test body'
+            'Test body',
+            'ccexample@example.com',
+            'bccexample@example.com'
         );
     }
 }

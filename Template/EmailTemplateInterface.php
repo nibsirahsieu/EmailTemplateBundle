@@ -16,6 +16,20 @@ interface EmailTemplateInterface
     function getFrom();
 
     /**
+     * CC address
+     * 
+     * @return string
+     */
+    function getCc();
+
+    /**
+     * Bcc address
+     * 
+     * @return string
+     */
+    function getBcc();
+
+    /**
      * Email subject
      * 
      * @return string

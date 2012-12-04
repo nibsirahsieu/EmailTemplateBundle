@@ -38,6 +38,8 @@ class TwigLoader implements LoaderInterface
             $template = $this->twig->loadTemplate($templateName);
                 
             $from = $template->renderBlock('from', $parameters);
+            $cc = $template->renderBlock('cc', $parameters);
+            $bcc = $template->renderBlock('bcc', $parameters);
             $subject = $template->renderBlock('subject', $parameters);
             $body = $template->renderBlock('body', $parameters);
         } catch (\Twig_Error_Loader $e) {
@@ -47,7 +49,9 @@ class TwigLoader implements LoaderInterface
         return new EmailTemplate(
             $from, 
             $subject, 
-            $body
+            $body,
+            $cc,
+            $bcc
         );
     }
 }

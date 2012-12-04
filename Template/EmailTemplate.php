@@ -16,6 +16,20 @@ class EmailTemplate implements EmailTemplateInterface
     protected $from;
 
     /**
+     * Cc email address
+     * 
+     * @var string
+     */
+    protected $cc;
+
+    /**
+     * Bcc email address
+     * 
+     * @var string
+     */
+    protected $bcc;
+
+    /**
      * Email subject
      * 
      * @var string
@@ -36,12 +50,16 @@ class EmailTemplate implements EmailTemplateInterface
      * @param string $from
      * @param string $subject
      * @param string $body
+     * @param string $cc
+     * @param string $bcc
      */
-    public function __construct($from, $subject, $body)
+    public function __construct($from, $subject, $body, $cc = null, $bcc = null)
     {
         $this->from = $from;
         $this->subject = $subject;
         $this->body = $body;
+        $this->cc = $cc;
+        $this->bcc = $bcc;
     }
 
     /**
@@ -51,6 +69,24 @@ class EmailTemplate implements EmailTemplateInterface
     public function getFrom()
     {
         return $this->from;
+    }
+
+    /**
+     * {@inheritdoc}
+     * 
+     */
+    public function getCc()
+    {
+        return $this->cc;
+    }
+
+    /**
+     * {@inheritdoc}
+     * 
+     */
+    public function getBcc()
+    {
+        return $this->bcc;
     }
 
     /**

@@ -40,13 +40,17 @@ class ObjectLoader implements LoaderInterface
         }
 
         $from = $this->twig->render($templateName->getFrom(), $parameters);
+        $cc = $this->twig->render($templateName->getCc(), $parameters);
+        $bcc = $this->twig->render($templateName->getBcc(), $parameters);
         $subject = $this->twig->render($templateName->getSubject(), $parameters);
         $body = $this->twig->render($templateName->getBody(), $parameters);
         
         return new EmailTemplate(
             $from, 
             $subject, 
-            $body
+            $body,
+            $cc,
+            $bcc
         );
     }
 }
