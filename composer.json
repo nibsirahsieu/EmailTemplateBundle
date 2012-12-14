@@ -1,7 +1,7 @@
 {
     "name": "sfk/email-template-bundle",
     "type": "symfony-bundle",
-    "description": "This bundle helps you to deal with emails in your app. Render emails from Twig or Database, it's easy!.",
+    "description": "This bundle helps you to deal with emails in your Symfony2 app. Render emails from Twig or Database, it's easy!.",
     "keywords": ["emails integration","twig email", "doctrine email"],
     "homepage": "http://github.com/getme/EmailTemplateBundle",
     "license": "MIT",
