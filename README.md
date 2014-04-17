@@ -3,7 +3,7 @@ Email Templates Bundle for Symfony2
 
 This bundle can be useful when you need to send diffrent kind of emails from your app, for eg. user registration or forgot password email. Read usage section.
 
-[![Build Status](https://secure.travis-ci.org/getme/EmailTemplateBundle.png)](http://travis-ci.org/getme/EmailTemplateBundle)
+[![Build Status](https://travis-ci.org/mathewpeterson/EmailTemplateBundle.svg)](https://travis-ci.org/mathewpeterson/EmailTemplateBundle)
 
 ## Installation
 
