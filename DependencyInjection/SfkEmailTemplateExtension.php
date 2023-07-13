@@ -26,6 +26,6 @@ class SfkEmailTemplateExtension extends Extension
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
         
-        $container->setAlias('sfk_email_template.loader', $config['default_loader']);
+        $container->setAlias('Sfk\EmailTemplateBundle\Loader\LoaderInterface', $config['default_loader']);
     }
 }

@@ -10,11 +10,11 @@
     </parameters>
 
     <services>
-        <service id="sfk_email_template.loader.twig" class="%sfk_email_template.loader.twig_class%">
+        <service id="Sfk\EmailTemplateBundle\Loader\TwigLoader" class="%sfk_email_template.loader.twig_class%" public="false">
             <argument type="service" id="twig" />
         </service>
 
-        <service id="sfk_email_template.loader.object" class="%sfk_email_template.loader.object_class%">
+        <service id="Sfk\EmailTemplateBundle\Loader\ObjectLoader" class="%sfk_email_template.loader.object_class%" public="false">
             <argument type="service" id="twig" />
         </service>
 

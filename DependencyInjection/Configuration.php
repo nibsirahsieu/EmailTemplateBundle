@@ -22,7 +22,7 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->scalarNode('default_loader')->defaultValue('sfk_email_template.loader.twig')
+                ->scalarNode('default_loader')->defaultValue('Sfk\EmailTemplateBundle\Loader\TwigLoader')
             ->end()
         ;
         
