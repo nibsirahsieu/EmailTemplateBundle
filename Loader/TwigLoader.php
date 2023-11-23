@@ -3,25 +3,19 @@
 namespace Sfk\EmailTemplateBundle\Loader;
 
 use Sfk\EmailTemplateBundle\Template\EmailTemplate;
+use Twig\Environment;
+use Twig\Error\LoaderError;
 
 /**
  * TwigLoader
- * 
+ *
  */
-class TwigLoader implements LoaderInterface 
+class TwigLoader implements LoaderInterface
 {
-    /**
-     * @var \Twig_Environment
-     * 
-     */
     protected $twig;
-    
 
-    /**
-     * @param \Twig_Environment $twig
-     * 
-     */
-    public function __construct(\Twig_Environment $twig)
+
+    public function __construct(Environment $twig)
     {
         $this->twig = $twig;
     }
@@ -33,22 +27,22 @@ class TwigLoader implements LoaderInterface
     public function load($templateName, array $parameters = array())
     {
         $templateName = (string) $templateName;
-        
+
         try {
             $template = $this->twig->loadTemplate($templateName);
-                
+
             $from = $template->renderBlock('from', $parameters);
             $cc = $template->renderBlock('cc', $parameters);
             $bcc = $template->renderBlock('bcc', $parameters);
             $subject = $template->renderBlock('subject', $parameters);
             $body = $template->renderBlock('body', $parameters);
-        } catch (\Twig_Error_Loader $e) {
+        } catch (LoaderError $e) {
             throw new LoaderException(sprintf('Could not load "%s" template.', $templateName), $e->getCode(), $e);
         }
 
         return new EmailTemplate(
-            $from, 
-            $subject, 
+            $from,
+            $subject,
             $body,
             $cc,
             $bcc

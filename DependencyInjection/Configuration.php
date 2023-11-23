@@ -13,26 +13,20 @@ class Configuration implements ConfigurationInterface
 {
     /**
      * {@inheritdoc}
-     * 
+     *
      * @return TreeBuilder
      */
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('sfk_email_template');
-
-        if (method_exists($treeBuilder, 'getRootNode')) {
-            $rootNode = $treeBuilder->getRootNode();
-        } else {
-            // BC layer for symfony/config 4.1 and older
-            $rootNode = $treeBuilder->root("sfk_email_template");
-        }
+        $rootNode = $treeBuilder->getRootNode();
 
         $rootNode
             ->children()
                 ->scalarNode('default_loader')->defaultValue('Sfk\EmailTemplateBundle\Loader\TwigLoader')
             ->end()
         ;
-        
+
         return $treeBuilder;
     }
 }

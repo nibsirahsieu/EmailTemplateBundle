@@ -6,7 +6,6 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\Config\FileLocator;
-use Symfony\Component\DependencyInjection\Reference;
 
 /**
  * SfkEmailTemplateExtension
@@ -16,7 +15,7 @@ class SfkEmailTemplateExtension extends Extension
 {
     /**
      * {@inheritdoc}
-     * 
+     *
      */
     public function load(array $configs, ContainerBuilder $container)
     {
@@ -25,7 +24,7 @@ class SfkEmailTemplateExtension extends Extension
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
-        
+
         $container->setAlias('Sfk\EmailTemplateBundle\Loader\LoaderInterface', $config['default_loader']);
     }
 }

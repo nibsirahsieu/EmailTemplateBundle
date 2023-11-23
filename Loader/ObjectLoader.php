@@ -4,29 +4,20 @@ namespace Sfk\EmailTemplateBundle\Loader;
 
 use Sfk\EmailTemplateBundle\Template\EmailTemplateInterface;
 use Sfk\EmailTemplateBundle\Template\EmailTemplate;
+use Twig\Environment;
 
 /**
  * ObjectLoader
- * 
+ *
  */
-class ObjectLoader implements LoaderInterface 
+class ObjectLoader implements LoaderInterface
 {
-    /**
-     * @var \Twig_Environment
-     * 
-     */
     protected $twig;
-    
 
-    /**
-     * @param \Twig_Environment $twig
-     * 
-     */
-    public function __construct(\Twig_Environment $twig)
+
+    public function __construct(Environment $twig)
     {
         $this->twig = clone $twig;
-
-        $this->twig->setLoader(new \Twig_Loader_String());
     }
 
     /**
@@ -44,10 +35,10 @@ class ObjectLoader implements LoaderInterface
         $bcc = $this->twig->render($templateName->getBcc(), $parameters);
         $subject = $this->twig->render($templateName->getSubject(), $parameters);
         $body = $this->twig->render($templateName->getBody(), $parameters);
-        
+
         return new EmailTemplate(
-            $from, 
-            $subject, 
+            $from,
+            $subject,
             $body,
             $cc,
             $bcc
