@@ -29,7 +29,7 @@ class TwigLoader implements LoaderInterface
         $templateName = (string) $templateName;
 
         try {
-            $template = $this->twig->loadTemplate($templateName);
+            $template = $this->twig->load($templateName);
 
             $from = $template->renderBlock('from', $parameters);
             $cc = $template->renderBlock('cc', $parameters);
