@@ -24,7 +24,7 @@ class ObjectLoader implements LoaderInterface
      * {@inheritdoc}
      *
      */
-    public function load($templateName, array $parameters = array())
+    public function load($templateName, array $parameters = array()): EmailTemplateInterface
     {
         if (!$templateName instanceof EmailTemplateInterface) {
             throw new \InvalidArgumentException(sprintf('Instance of "EmailTemplateInterface" expected, "%s" given.', gettype($templateName)));

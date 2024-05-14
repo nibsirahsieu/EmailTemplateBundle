@@ -3,6 +3,7 @@
 namespace Sfk\EmailTemplateBundle\Loader;
 
 use Sfk\EmailTemplateBundle\Template\EmailTemplate;
+use Sfk\EmailTemplateBundle\Template\EmailTemplateInterface;
 use Twig\Environment;
 use Twig\Error\LoaderError;
 
@@ -24,7 +25,7 @@ class TwigLoader implements LoaderInterface
      * {@inheritdoc}
      *
      */
-    public function load($templateName, array $parameters = array())
+    public function load($templateName, array $parameters = array()): EmailTemplateInterface
     {
         $templateName = (string) $templateName;
 

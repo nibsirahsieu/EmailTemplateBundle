@@ -2,21 +2,21 @@
 
 namespace Sfk\EmailTemplateBundle\Loader;
 
-use Sfk\EmailTemplateBundle\Template\EmailTemplate;
+use Sfk\EmailTemplateBundle\Template\EmailTemplateInterface;
 
 /**
  * LoaderInterface
- * 
+ *
  */
-interface LoaderInterface 
+interface LoaderInterface
 {
     /**
      * Load email template
      *
      * @param string $templateName Template to load
      * @param array $parameters Template parameters
-     * 
-     * @return EmailTemplate
+     *
+     * @return EmailTemplateInterface
      */
     function load($templateName, array $parameters = array());
 }
